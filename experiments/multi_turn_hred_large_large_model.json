@@ -1,0 +1,53 @@
+{
+  "dataset_reader": {
+    "type": "DoG_dataset_reader",
+    "split_sentence_in_doc": true
+  },
+  "train_data_path": "DoG/train.jsonl",
+  "validation_data_path": "DoG/valid.jsonl",
+  "test_data_path": "DoG/test.jsonl",
+  "evaluate_on_test": true,
+  "model": {
+    "type": "multi_turn_hred",
+    "token_embedder": {
+      "tokens": {
+        "type": "embedding",
+        "pretrained_file": "pretrained_files/glove.6B.100d.txt",
+        "embedding_dim": 100,
+        "trainable": true
+      }
+    },
+    "sequence_encoder": {
+      "type": "gru", // Optional
+      "input_size":100,
+      "hidden_size": 512,
+      "num_layers": 3, // Can be multi-layer.
+      "bidirectional": false, // Optional
+      "dropout": 0.2
+    },
+    "context_encoder": {
+      "type": "gru",
+      "input_size": 512,
+      "hidden_size": 512,
+      "num_layers": 1,
+      "dropout": 0.2
+    },
+    "beam_size": 4
+  },
+  "iterator": {
+    "type": "bucket",
+    "sorting_keys": [["dialogue", "num_fields"], ["document", "num_fields"]],
+    "batch_size": 1
+  },
+
+  "trainer": {
+    "num_epochs": 60,
+   // "patience": 10,
+    "cuda_device":[0,1],
+    "grad_clipping": 5.0,
+    "validation_metric": "-loss",
+    "optimizer": {
+      "type": "adam"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+DoG/
+outputs/
+pretrained_files/
+my_library/models/__pycache__/
+*.pyc
+.idea/

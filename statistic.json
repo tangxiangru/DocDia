@@ -1,0 +1,29 @@
+{
+  "test": {
+    "max_turns": 60,
+    "min_turns": 13,
+    "user1_saw": 80,
+    "user2_saw": 122,
+    "both_saw": 200,
+    "rating>1": 402,
+    "total_turns": 10727
+  },
+  "valid": {
+    "max_turns": 63,
+    "min_turns": 15,
+    "user1_saw": 38,
+    "user2_saw": 31,
+    "both_saw": 88,
+    "rating>1": 157,
+    "total_turns": 4141
+  },
+  "train": {
+    "max_turns": 97,
+    "min_turns": 11,
+    "user1_saw": 520,
+    "user2_saw": 574,
+    "both_saw": 1125,
+    "rating>1": 2219,
+    "total_turns": 60562
+  }
+}
